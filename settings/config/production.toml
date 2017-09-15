@@ -30,7 +30,7 @@ postsize="2MB"
 
 [mysql]
 host="db"
-user="root"
+user="mailtrain"
 password="mailtrain"
 database="mailtrain"
 port=3306 # some installations, eg. MAMP can use a different port (8889)

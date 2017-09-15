@@ -10,6 +10,7 @@ RUN set -ex && apk add --no-cache curl \
   && mkdir /app \
   && mv mailtrain-${MAILTRAIN_VERSION}/*  /app
 
+ADD ./settings /app
 WORKDIR /app
 
 # Mailtrain contain native dependencies so pyhton needs to be insalled
@@ -20,5 +21,4 @@ RUN apk add --no-cache make gcc g++ python && \
   apk del make gcc g++ python
 
 ENV NODE_ENV=production
-ADD root /
 CMD ["node", "index.js"]

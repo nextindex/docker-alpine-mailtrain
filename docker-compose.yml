@@ -12,7 +12,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./root/app/config:/app/config
+      - mailtrain-node-config:/app/config
       - mailtrain-node-data:/app/public/grapejs/uploads
       - mailtrain-node-data:/app/public/mosaico/uploads
       - mailtrain-node-reports:/app/protected/reports
