@@ -1,6 +1,6 @@
 [![Docker Stars](https://img.shields.io/docker/stars/nextindex/alpine-mailtrain.svg?style=flat-square)](https://hub.docker.com/r/nextindex/alpine-mailtrain/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/nextindex/alpine-mailtrain.svg?style=flat-square)](https://hub.docker.com/r/nextindex/alpine-mailtrain/)
-[![ImageLayers Size](https://img.shields.io/imagelayers/image-size/nextindex/alpine-mailtrain/latest.svg?style=flat-square)](https://hub.docker.com/r/nextindex/alpine-mailtrain/)
+
 
 # Alpine Mailtrain
 
