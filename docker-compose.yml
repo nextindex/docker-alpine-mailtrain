@@ -12,7 +12,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - mailtrain-node-config:/app/config
+      - ./root/app/config:/app/config
       - mailtrain-node-data:/app/public/grapejs/uploads
       - mailtrain-node-data:/app/public/mosaico/uploads
       - mailtrain-node-reports:/app/protected/reports
@@ -31,6 +31,8 @@ services:
     image: redis:4.0.1
     volumes:
       - mailtrain-redis-data:/data
+    networks:
+      - back
 networks:
   front:
   back:

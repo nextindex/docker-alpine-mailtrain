@@ -1,11 +1,13 @@
 
 # If you start out as a root user (eg. if you want to use ports lower than 1000)
 # then you can downgrade the user once all services are up and running
-#user="nobody"
-#group="nogroup"
+user="nobody"
+group="nogroup"
 
 # Process title visible in monitorin logs and process listing
 title="mailtrain"
+
+language="de_DE"
 
 [log]
 level="verbose"
@@ -37,8 +39,8 @@ timezone="local"
 
 [redis]
 # enable to use Redis session cache or disable if Redis is not installed
-enabled=false
-host="localhost"
+enabled=true
+host="redis"
 port=6379
 db=5
 
@@ -54,3 +56,30 @@ host="0.0.0.0"
 username="testuser"
 password="testpass"
 logger=false
+
+[ldap]
+# enable to use ldap user backend
+enabled=false
+host="localhost"
+port=3002
+baseDN="ou=users,dc=company"
+filter="(|(username={{username}})(mail={{username}}))"
+passwordresetlink=""
+
+[postfixbounce]
+# Enable to allow writing Postfix bounce log to Mailtrain listener
+# If enabled, tail mail.log to Mailtrain with the following command:
+#     tail -f -n +0 /var/log/mail.log | nc localhost 5699 -
+enabled=true
+port=5699
+# allow connections from localhost only
+host="127.0.0.1"
+
+# extra options for nodemailer
+[nodemailer]
+#textEncoding="base64"
+
+[queue]
+# How many parallel sender processes to spawn
+# You can use more than 1 process only if you have Redis enabled
+processes=1
