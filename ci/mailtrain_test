@@ -2,10 +2,8 @@
 
 set -e
 
-
-docker build -t evild/alpine-mailtrain:latest .
-docker inspect evild/alpine-mailtrain:latest
-
+docker build -t nextindex/alpine-mailtrain:latest .
+docker inspect nextindex/alpine-mailtrain:latest
 
 docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-docker push evild/alpine-mailtrain:latest
+docker push nextindex/alpine-mailtrain:latest

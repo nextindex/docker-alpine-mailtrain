@@ -1,7 +1,7 @@
-FROM evild/alpine-nodejs:6.3.0
-MAINTAINER DOMINIQUE HAAS <contact@dominique-haas.fr>
+FROM mhart/alpine-node:8
+MAINTAINER JAKUB JUSZCZAK <jakub@nextindex.de>
 
-ARG MAILTRAIN_VERSION=1.20.0
+ARG MAILTRAIN_VERSION=1.24.0
 
 RUN set -ex && apk add --no-cache curl \
   && cd /tmp \
@@ -11,6 +11,14 @@ RUN set -ex && apk add --no-cache curl \
   && mv mailtrain-${MAILTRAIN_VERSION}/*  /app
 
 WORKDIR /app
-RUN npm install --production
 
+# Mailtrain contain native dependencies so pyhton needs to be insalled
+
+RUN apk add --no-cache make gcc g++ python && \
+  npm install --production && \
+  npm cache clean --force && \
+  apk del make gcc g++ python
+
+ENV NODE_ENV=production
 ADD root /
+CMD ["node", "index.js"]

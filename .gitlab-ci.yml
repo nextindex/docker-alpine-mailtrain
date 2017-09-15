@@ -1,6 +1,5 @@
 stages:
   - test
-  - tweet
   - deploy
 
 image: docker:latest
@@ -15,29 +14,6 @@ test_job:
   stage: test
   script:
     - ci/mailtrain_test
-
-tweet_succeed_job:
-  variables:
-    PASSED: "true"
-  stage: tweet
-  only:
-    - tags
-    - triggers
-    - master
-  script:
-    - ci/mailtrain_tweet
-
-tweet_failed_job:
-  variables:
-    PASSED: "false"
-  stage: tweet
-  only:
-    - tags
-    - triggers
-    - master
-  script:
-    - ci/mailtrain_tweet
-  when: on_failure
 
 deploy_job:
   stage: deploy
